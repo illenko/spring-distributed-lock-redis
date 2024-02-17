@@ -1,1 +1,1 @@
-rootProject.name = "spring-distributed-lock-redis"
+rootProject.name = "distributed-lock"

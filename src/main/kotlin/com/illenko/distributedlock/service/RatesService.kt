@@ -1,14 +1,16 @@
-package com.illenko.springdistributedlockredis.service
+package com.illenko.distributedlock.service
 
-import com.illenko.springdistributedlockredis.client.CacheClient
-import com.illenko.springdistributedlockredis.client.CryptoRatesClient
-import com.illenko.springdistributedlockredis.model.CryptoRate
+import com.illenko.distributedlock.redis.CacheClient
+import com.illenko.distributedlock.client.CryptoRatesClient
+import com.illenko.distributedlock.model.CryptoRate
+import com.illenko.distributedlock.redis.LockManager
 import org.springframework.stereotype.Service
 
 @Service
 class RatesService(
     private val cryptoRatesClient: CryptoRatesClient,
     private val cacheClient: CacheClient,
+    private val lockManager: LockManager,
 ) {
 
     fun getCryptoRatesNoCache(): List<CryptoRate> = cryptoRatesClient.getCryptoRates()
@@ -27,13 +29,13 @@ class RatesService(
     fun getCryptoRatesCachedDistributedLock(): List<CryptoRate> {
         val cachedValue = cacheClient.getCryptoRates()
         return if (cachedValue == null) {
-            cacheClient.lock()
+            lockManager.lock()
             var value = cacheClient.getCryptoRates()
             if (value == null) {
                 value = cryptoRatesClient.getCryptoRates()
                 cacheClient.setCryptoRates(value)
             }
-            cacheClient.unlock()
+            lockManager.unlock()
             value
         } else {
             cachedValue

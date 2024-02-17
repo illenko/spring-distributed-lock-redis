@@ -1,13 +1,13 @@
-package com.illenko.springdistributedlockredis
+package com.illenko.distributedlock
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-@ConfigurationPropertiesScan("com.illenko.springdistributedlockredis")
-class SpringDistributedLockRedisApplication
+@ConfigurationPropertiesScan("com.illenko.distributedlock")
+class DistributedLockApplication
 
 fun main(args: Array<String>) {
-    runApplication<SpringDistributedLockRedisApplication>(*args)
+    runApplication<DistributedLockApplication>(*args)
 }

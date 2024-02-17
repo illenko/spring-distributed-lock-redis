@@ -1,10 +1,10 @@
-package com.illenko.springdistributedlockredis
+package com.illenko.distributedlock
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SpringDistributedLockRedisApplicationTests {
+class DistributedLockApplicationTests {
 
     @Test
     fun contextLoads() {

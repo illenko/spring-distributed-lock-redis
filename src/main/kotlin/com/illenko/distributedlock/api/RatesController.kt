@@ -1,7 +1,7 @@
-package com.illenko.springdistributedlockredis.api
+package com.illenko.distributedlock.api
 
-import com.illenko.springdistributedlockredis.model.CryptoRate
-import com.illenko.springdistributedlockredis.service.RatesService
+import com.illenko.distributedlock.model.CryptoRate
+import com.illenko.distributedlock.service.RatesService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

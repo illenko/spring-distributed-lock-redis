@@ -1,4 +1,4 @@
-package com.illenko.springdistributedlockredis.model
+package com.illenko.distributedlock.model
 
 data class CryptoRate(
     val currency: String,

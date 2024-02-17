@@ -1,6 +1,6 @@
-package com.illenko.springdistributedlockredis.client
+package com.illenko.distributedlock.client
 
-import com.illenko.springdistributedlockredis.model.CryptoRate
+import com.illenko.distributedlock.model.CryptoRate
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
 import java.util.concurrent.atomic.AtomicLong

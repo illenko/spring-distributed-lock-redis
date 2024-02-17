@@ -1,4 +1,4 @@
-package com.illenko.springdistributedlockredis.properties
+package com.illenko.distributedlock.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import java.time.Duration

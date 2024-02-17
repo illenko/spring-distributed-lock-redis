@@ -6,3 +6,4 @@ spring:
 cache:
   lease-time: PT3S
   ttl: PT10S
+  rate: 8

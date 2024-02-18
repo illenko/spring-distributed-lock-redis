@@ -2,8 +2,6 @@ package com.illenko.distributedlock.redis
 
 import com.illenko.distributedlock.client.CryptoRatesClient
 import mu.KotlinLogging
-import org.springframework.boot.context.event.ApplicationReadyEvent
-import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import java.util.concurrent.TimeUnit
@@ -18,8 +16,7 @@ class CacheManager(
     private val log = KotlinLogging.logger { }
     private val cacheRefillCounter = AtomicLong()
 
-    @EventListener(ApplicationReadyEvent::class)
-    @Scheduled(fixedDelayString = "\${cache.delay}", initialDelayString = "\${cache.delay}", timeUnit = TimeUnit.SECONDS)
+    @Scheduled(fixedRateString = "\${cache.rate}", timeUnit = TimeUnit.SECONDS)
     fun cacheRates() {
         cacheClient.setCryptoRates(cryptoRatesClient.getCryptoRates())
         log.info { "Cached value by scheduled job: ${cacheRefillCounter.incrementAndGet()}" }
